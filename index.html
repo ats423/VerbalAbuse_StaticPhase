@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gapminder Wealth and Health</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+<h1>D3</h1>
+
+<div id="viz"></div>
+
+</body>
+
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+    var dataset;
+    var viz = d3.select("#viz");
+    d3.json("WriteTest.json", function (error, result){
+        dataset = result;
+        render();
+    })
+
+    function render() {
+        var changes = viz.selectAll("div")
+                .data(dataset)
+                .enter()
+                .append("div")
+                .text(function(d) { return d.text });
+
+    }
+
+
+
+
+</script>
+</html>
