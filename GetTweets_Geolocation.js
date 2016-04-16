@@ -50,7 +50,7 @@ JSON file, then write to the Tweets_Geolocation.json file
 
 function generateFile(){
     var str = JSON.stringify(tweets)
-    fs.writeFile("/Users/Alexandra/Documents/NodeTest/Tweets_Geolocation.json", str, function(err) {
+    fs.writeFile("Tweets_Geolocation.json", str, function(err) {
         if(err) {
             return console.log(err);
         }
