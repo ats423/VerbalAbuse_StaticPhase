@@ -21,7 +21,7 @@ geotagged Tweets within the United States, retrieve 500 tweets
 
 var parameters = {
     q: 'women abortion OR slut OR queer OR sexism -RT',
-    count: 100,
+    count: 10,
     include_entities: true,
     geocode:'39.8,-95.583068847656,2500km'
 
