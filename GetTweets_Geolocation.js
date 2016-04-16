@@ -16,7 +16,7 @@ var T = new Twit ({
 })
 
 /*Set the search parameters: search for words women AND (abortion OR slut OR queer OR sexism), search for
-geotagged Tweets within the United States, retrieve 500 tweets
+geotagged Tweets within the United States, retrieve 100 tweets
  */
 
 var parameters = {
