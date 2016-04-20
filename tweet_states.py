@@ -69,7 +69,7 @@ for state in twtState['features']:
     tot_dens += state['properties']['twtDensity']
 
 for state in twtState['features']:
-    state['properties']['twtDensity'] = state['properties']['twtDensity'] / tot_dens
+    state['properties']['twtDensity'] = int(100.00*state['properties']['twtDensity'] / tot_dens)
     
 with open('twtDensity.json', 'w') as fp:
     json.dump(twtState, fp)
