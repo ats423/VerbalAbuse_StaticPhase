@@ -33,7 +33,7 @@ def point_inside_polygon(x,y,poly):
 
     return inside
 
-json_data2=open('Tweets_Geo.json').read()
+json_data2=open('Tweets_Geolocation.json').read()
 Tweets = geojson.loads(json_data2)
 
 json_data3=open('centroids-tweets.json').read()
@@ -42,9 +42,11 @@ twtState = json.loads(json_data3)
 for state in twtState['features']:
     state['properties']['count'] = 0. 
 
+ct = 0
 for twt in Tweets:
     x = twt['coordinates']['coordinates'][0]
     y = twt['coordinates']['coordinates'][1]
+    ct += 1
     for st in State['features']:
         poly = st['geometry']['coordinates'][0]
         if len(np.shape(np.array(poly))) == 2:
@@ -53,12 +55,13 @@ for twt in Tweets:
                 for state in twtState['features']:
                     if state['properties']['name']==st['properties']['name']:
                         state['properties']['count'] += 1.  
+                        
         elif len(np.shape(np.array(poly))) == 3:
             poly = st['geometry']['coordinates'][0][0]
             if point_inside_polygon(x,y,poly):
                 for state in twtState['features']:
                     if state['properties']['name']==st['properties']['name']:
-                        state['properties']['count'] += 1.                  
+                        state['properties']['count'] += 1.    
             
 tot_dens = 0.00
 for state in twtState['features']:
