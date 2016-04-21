@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Verbal Abuse Map</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+<h1>Verbal Abuse Map</h1>
+
+<div id="viz"></div>
+
+</body>
+
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script>
+    var dataset;
+    var viz = d3.select("#viz");
+    /*
+    Read in JSON file with Twitter data, then set data equal to global
+    variable dataset and call render function
+     */
+    d3.json("Tweets_Geolocation.json", function (error, result){
+        dataset = result;
+        render();
+    })
+    /*
+    Create render function, select div to pass data into and initiate with enter().
+    The, add data to the div and return values for the key "text" in the JSON file,
+    which corresponds with the tweet statements
+     */
+    function render() {
+        var changes = viz.selectAll("div")
+                .data(dataset)
+                .enter()
+                .append("div")
+                .text(function(d) { return d.text });
+
+    }
+
+
+
+
+</script>
+</html>
